@@ -121,7 +121,7 @@ namespace OAuthJwtAssertionTokenClient
             }
             var scopeString = string.Join("", scopes);
             var cacheKey = string.Join(":", _partialCacheKey, scopeString);
-            return await _cache.GetAsync(cacheKey, () => _internalClient.GetToken(scopes));
+            return await _cache.GetAsync(cacheKey, () => _internalClient.GetToken(scopes)).ConfigureAwait(false);
         }
 
         /// <summary>
